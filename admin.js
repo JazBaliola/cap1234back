@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 const CryptoJS = require("crypto-js");
 const router = express.Router();
 
-const callback = "http://localhost:3000";
+const callback = "https://frontend1234.onrender.com/";
 
 // db configuration
 const conn = mysql.createPool({
