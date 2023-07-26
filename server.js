@@ -306,6 +306,7 @@ app.get("/", (req, res) => {
     if (err) {
       return console.log("error" + err.message);
     }
+    res.status(200).send(data);
     return res.json(data);
   })
 })
