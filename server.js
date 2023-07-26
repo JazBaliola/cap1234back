@@ -285,9 +285,9 @@ let transporter1 = nodemailer.createTransport({
  
 // defined a route handler for the root path "/" of the server. when get request is made to the root path. the provided
 // callback function is executed
-app.get('/', async (req, res) => {
-  res.status(200).send("Main Backend Route");
-});
+// app.get('/', async (req, res) => {
+//   res.status(200).send("Main Backend Route");
+// });
 
 // Routers - imports the user and admin from their respective files
 const userRouter = require('./user');
@@ -307,6 +307,7 @@ app.get("/", (req, res) => {
       return console.log("error" + err.message);
     }
     res.status(200).send(data);
+    res.status(200).send("Damn Not Working");
     return res.json(data);
   })
 })
