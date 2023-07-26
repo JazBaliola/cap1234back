@@ -7,10 +7,10 @@ const callback = "http://localhost:3000";
 
 // db configuration
 const conn = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'ApplyNow.1',
-    database: 'ticketingsytem',
+    host: 'gator3403.hostgator.com',
+    user: 'jazcoeit',
+    password: 'Jaz@quickserve',
+    database: 'jazcoeit_quickserve',
   });
   
 // create a promise of pool

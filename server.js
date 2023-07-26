@@ -9,10 +9,10 @@ const mysql = require("mysql");
 app.use(cors());
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'ApplyNow.1',
-    database: 'ticketingsytem',
+    host: 'gator3403.hostgator.com',
+    user: 'jazcoeit',
+    password: 'Jaz@quickserve',
+    database: 'jazcoeit_quickserve',
   });
   
 
@@ -21,7 +21,7 @@ const connection = mysql.createConnection({
 // Ticketing Part -----------------------------------------------------------------------------------------------------------------------------------------------------------
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.get("/adminTickets", (req, res) => {
-    const sql = "SELECT * FROM issued_tickets;";
+    const sql = "SELECT * FROM ISSUED_TICKETS;";
     connection.query(sql, (err,data) => {
         if(err)  return res.json('Error: ' + err.message);
          return res.json(data);
@@ -78,7 +78,7 @@ const upload = multer({
 
 app.use(express.json());
 app.post('/createTicket', upload.single('image'), (req, res) => {
-    const sql = "INSERT INTO ticketingsytem.issued_tickets (TICKET_DATE, TICKET_SUBJECT, TICKET_CATEGORY, TICKET_DESCRIPTION, TICKET_PRIORITY, TICKET_STATUS, TICKET_PIC)  VALUES (?);"
+    const sql = "INSERT INTO ISSUED_TICKETS (TICKET_DATE, TICKET_SUBJECT, TICKET_CATEGORY, TICKET_DESCRIPTION, TICKET_PRIORITY, TICKET_STATUS, TICKET_PIC)  VALUES (?);"
     let filename = "";
     if (req.file) {
         filename = req.file.filename;
@@ -301,7 +301,7 @@ app.use('/admin', adminRouter);
 // Homepage part --------------------------------------------------------------------------------------------------------------------------------
 
 app.get("/", (req, res) => {
-  const sql = "SELECT * FROM ticketingsytem.users";
+  const sql = "SELECT * FROM users";
   connection.query(sql, (err, data) => {
     if (err) {
       return console.log("error" + err.message);
@@ -339,7 +339,7 @@ app.use(express.json());
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
 
-  const sql = "SELECT * FROM ticketingsytem.users WHERE email = ? AND password = ?";
+  const sql = "SELECT * FROM users WHERE email = ? AND password = ?";
   connection.query(sql, [email, password], (err, result) => {
     if (err) {
       console.error("Error executing the query");
@@ -365,7 +365,7 @@ app.post("/login", (req, res) => {
 
 app.post("/signup", (req, res) => {
   const sql =
-    "INSERT INTO `ticketingsytem`.`users` (`email`, `password`, `firstName`, `lastName`,`isActive`, `isEmployee`, `isAdmin`) VALUES (?,?,?,?,?,?,?);";
+    "INSERT INTO `users` (`email`, `password`, `firstName`, `lastName`,`isActive`, `isEmployee`, `isAdmin`) VALUES (?,?,?,?,?,?,?);";
   const values = [
     req.body.email,
     req.body.password,
