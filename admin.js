@@ -51,7 +51,7 @@ router.get('/newpass', async (req, res) => {
     promiseConn.query(sql, queryData)
         .then(([rows, fields]) => { // rows.affectedRows > 0
             if(rows.affectedRows > 0) {
-                window.location.hash = "/adminPanel#passUpdatedTrue";
+                window.location = "/adminPanel#passUpdatedTrue";
             } else {
                 res.redirect(callback+"#passUpdatedFalse");
             }
