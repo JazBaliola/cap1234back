@@ -147,8 +147,7 @@ router.get('/new', (req, res) => {
         .then(([rows, fields]) => {
             // check if query affected a row
             if(rows.affectedRows > 0) {
-                
-                // window.open(callback+'#userAddedTrue');
+                res.send("<script>window.open('"+callback+"#userAddedTrue')</script>");
             } else {
                 res.redirect(callback+"#userAddedFalse");
             }
